@@ -1,0 +1,14 @@
+import { createClient } from "@supabase/supabase-js";
+
+const url = import.meta.env.VITE_SUPABASE_URL;
+const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+if (!url || !anonKey) {
+  // eslint-disable-next-line no-console
+  console.error(
+    "Faltan las variables VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY. " +
+    "Creá un archivo .env (copiá .env.example) con los datos de tu proyecto de Supabase."
+  );
+}
+
+export const supabase = createClient(url, anonKey);
